@@ -1,0 +1,90 @@
+{% extends 'back/base.html.twig' %}
+{% block title%} Liste des opportunites{% endblock %}
+{% block body %}
+    {% if opportunites %}
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+            <div class="card card-info">
+              <div class="card-header">
+                <h3 class="card-title">Tous les opportunités</h3>
+              </div>
+            <div class="card-body" >
+           <a href="/opportunity/new" class="btn btn-secondary">Ajouter une opportunité</a> 
+           <a href="/opportunity/libre" class="btn btn-warning">Opportunités libres</a> 
+            <a href="/opportunity/reservee" class="btn btn-success">Opportunités reservées</a> 
+            </div>
+        <div class="card-body">
+                <table class="table table-bordered">
+                <tr>
+                 <th>Id</th>
+                 <th>Date de soumission</th>
+                 <th>Date d'attribution</th>
+                 <th>Valeur totale</th>
+                 <th>Valeur nette</th>
+                 <th>Client</th>
+                 <th>Departement</th>
+                 <th>Pays</th>
+                 <th>Statut</th>
+                 <th>Confiance</th>
+                 <th>Accord</th>
+                 <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for opp in opportunites %}
+                    <tr>
+                        <td>{{ opp.id }}</td>
+                        <td>{{ opp.datedesoumission | date('d/m/Y')}}</td>
+                        <td>{{ opp.datedattribution is empty ? "" : opp.datedattribution | date('d/m/Y')}}</td>
+                        <td>{{ opp.valeurtotale }}</td>
+                        <td>{{ opp.valeurnette }}</td>
+                        <td>{{ opp.client.nom }} {{opp.client.prenom}}</td>
+
+                        <td>{{ opp.departement.nom is empty ? "" : opp.departement.nom }}</td>
+                        <td>{{ opp.pays.libelle is empty ? "" : opp.pays.libelle }}</td>
+                        <td>{% if opp.statut == "Libre" %}
+                             <a  class="btn btn-warning">Libre</a> 
+                             {% else %}
+                             <a  class="btn btn-success">Reservée</a> 
+                             {% endif %}
+                        </td>
+                        <td>{{ opp.confiance }}</td>
+                        <td>{{ opp.accord }}</td>
+                        <td> {% if opp.statut == "Libre" %} 
+                             <a href="/opportunity/edit/{{ opp.id }}" class="btn  btn-info">Modifier</a>
+                             {% else %}
+                            <a href="/opportunity/edit/{{ opp.id }}" class="btn  btn-info">Details</a>
+                             {% endif %} 
+                             {% if opp.statut == "Libre" %}              
+                             <a href="/opportunity/delete/{{ opp.id }}" class="btn btn-danger"onclick="return confirm('Etes vous sûr de supprimer cette opportunite?');">Supprimer</a>
+                             {% endif %}
+                              {% if opp.statut == "Libre" %}     
+                             <a href="/opportunity/reserver/{{ opp.id }}" class="btn btn-success"onclick="return confirm('Etes vous sûr de reserver cette opportunite?');">Reserver</a>
+                            {% endif %}
+                           <a href="/opportunity/pdf/{{opp.id}}" class="btn  btn-info">rapport</a>
+
+                            
+
+                        </td>
+                    </tr>
+                {% endfor %}
+             </tbody>
+         </table>
+        </div>
+        <div class="card-footer clearfix">
+                <ul class="pagination pagination-sm m-0 float-right">
+                  <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
+                  <li class="page-item"><a class="page-link" href="#">1</a></li>
+                  <li class="page-item"><a class="page-link" href="#">2</a></li>
+                  <li class="page-item"><a class="page-link" href="#">3</a></li>
+                  <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
+                </ul>
+              </div>
+            </div>
+        {% else %}
+        <h1 align='center'>Aucun opportunites</h1>
+        <div align='center' >
+           <a href="/opportunity/new" class="btn btn-dark">Ajouter </a> </div>
+        {% endif %}
+{% endblock %}

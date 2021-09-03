@@ -1,0 +1,26 @@
+{% extends 'back/base.html.twig' %}
+{% block title %}
+	{{ client.nom }}
+{% endblock %}
+{% block body %}
+<section class="content" >
+      <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6">
+            <div class="card card-secondary">
+              <div class="card-header">
+                <h1 class="card-title">Donnes du client</h1>
+              </div>
+    <div  >
+    <div class="card-body">
+	
+	<h3>Nom :{{ client.nom }}</h3>
+	<h3>Prenom :{{ client.prenom }}</h3>
+	<h3>Email :{{ client.email }}</h3>
+	<h3>Adresse :{{ client.adresse }}</h3>
+	<h3>telephone :{{ client.telephone }}</h3>
+	<h3>Raison :{{ client.raison }}</h3>
+	<h3>Fax :{{ client.fax }}</h3>
+	<hr>
+	<a class="btn btn-dark" href="/client">Retour</a>
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends 'back/base.html.twig' %}
+{% block title%} Liste des opportunites{% endblock %}
+{% block body %}
+    {% if op %}
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+            <div class="card card-info">
+              <div class="card-header">
+                <h1 class="card-title">Les opportunités reservées</h1>
+              </div>
+    <div  >
+    <div class="card-body">
+    <table class="table table-bordered">
+            <thead>
+                <tr>
+                 <th>Id</th>
+                 <th>Date de soumission</th>
+                 <th>Date d'attribution</th>
+                 <th>Valeur totale</th>
+                 <th>Valeur nette</th>
+                 <th>Departement</th>
+                 <th>Statut</th>
+                 <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for opp in op %}
+                    <tr>
+                        <td>{{ opp.id }}</td>
+                        <td>{{ opp.datedesoumission | date('d/m/Y')}}</td>
+                        <td>{{ opp.datedattribution is empty ? "" : opp.datedattribution | date('d/m/Y')}}</td>
+                        <td>{{ opp.valeurtotale }}</td>
+                        <td>{{ opp.valeurnette }}</td>
+                        <td>{{ opp.departement.nom is empty ? "" : opp.departement.nom }}</td>
+                        <td>{{ opp.statut }}</td>
+                        <td> 
+                             <a href="/opportunity/edit/{{ opp.id }}" class="btn btn-info">Details</a>               
+                         
+                             
+                    </tr>
+                {% endfor %}
+             </tbody>
+        </table>
+       {% endif %}
+{% endblock %}

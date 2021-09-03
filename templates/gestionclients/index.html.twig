@@ -1,0 +1,62 @@
+{% extends 'back/base.html.twig' %}
+
+{% block title %}Liste des clients
+{% endblock %}
+{% block body %}
+
+	
+	{% if clients %}
+		<section class="content">
+      <div class="container-fluid">
+        <div class="row">
+            <div class="card card-info">
+              <div class="card-header">
+                <h3 class="card-title">Tous les Clients</h3>
+              </div>
+            <div class="card-body" >
+           <a href="/Gestionclients/new" class="btn btn-secondary">Ajouter un client</a> 
+           
+            </div>
+        <div class="card-body">
+                <table class="table table-bordered">
+									<thead>
+										<tr>
+											<th scope="col">Raison</th>
+											<th scope="col">Nom</th>
+											<th scope="col">Prenom</th>
+											<th scope="col">Email</th>
+											<th scope="col">Adresse</th>
+											<th scope="col">Telephone</th>
+											<th scope="col">Fax</th>
+										</tr>
+									</thead>
+									<tbody>
+										{% for client in clients %}
+											<tr>
+												<td>
+													{{client.raison}}</td>
+												<td>
+													{{client.nom}}</td>
+												<td>
+													{{client.prenom}}</td>
+												<td>
+													{{client.email}}</td>
+												<td>
+													{{client.adresse}}</td>
+												<td>
+													{{client.telephone}}</td>
+												<td>
+													{{client.fax}}</td>
+												<td>
+													<a href="/gestionclients/{{ client.id }}" class="btn btn-info">Détails</a>
+													<a href="/gestionclients/edit/{{client.id}}" class="btn btn-info">Modifier</a>
+													<a href="/gestionclients/delete/{{client.id}}" class="btn btn-danger" onclick="return confirm('Etes-vous sûr de supprimer cet client?');">Supprimer</a>
+												</td>
+											</tr>
+										{% endfor %}
+									</tbody>
+								</table>
+							{% else %}
+								<p>Aucun client</p>
+							{% endif %}
+						{% endblock %}

@@ -1,0 +1,45 @@
+{% extends 'back/base.html.twig' %}
+{% block title %}Modifier{% endblock %}
+{% block body %}
+{% if editmode %}
+<section class="content" >
+      <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6">
+            <div class="card card-secondary">
+              <div class="card-header">
+                <h1 class="card-title">Modifier l'opportunite avec l'Id : {{opp.id}}</h1>
+              </div>
+    <div  >
+    <div class="card-body">
+{{ form_start(form) }}
+{{ form_widget(form) }}
+<div>
+    <button type="submit" class="btn btn-success">Modifier</button>
+    <a class="btn btn-secondary" href="/opportunity">Retour</a>
+</div>
+{{ form_end(form)}}
+{% else %} 
+<section class="content" >
+      <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6">
+            <div class="card card-secondary">
+              <div class="card-header">
+                <h1 class="card-title">Details l'opportunite avec l'Id : {{opp.id}}</h1>
+              </div>
+    <div  >
+    <div class="card-body">
+  <h3>Date de soumission : {{ opp.datedesoumission | date('d/m/Y')}}</h3>
+  <h3>Date d'attribution : {{ opp.datedattribution | date('d/m/Y')}}</h3>
+  <h3>Valeur totale : {{ opp.valeurtotale }}</h3>
+  <h3>Valeur nette : {{ opp.valeurnette }}</h3>
+  <h3>Departement : {{ opp.departement.nom is empty ? "" : opp.departement.nom }}</h3>
+  <h3>Statut : {{ opp.statut }}</h3>
+  <h3>Confiance : {{ opp.confiance }}</h3>
+  <h3>Accord: {{ opp.accord }}</h3>
+  <a class="btn btn-secondary" href="/opportunity">Retour</a>
+
+
+{% endif %} 
+{% endblock %}

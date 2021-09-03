@@ -1,0 +1,60 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{{title}}
+</title>
+</head>
+<style>
+table, th, td {
+  border:1px solid black;
+}
+</style>
+<body>
+
+<h2><center>
+Les avantages et les limites d’opportunité </center></h2>
+
+<table style="width:100%">
+  <tr>
+    <td>commercial</td>
+    <td>pays</td>
+    <td>territoire</td>
+      <td>client</td>
+    <td>etape_transaction</td>
+    <td>departement</td>
+      <td>date_soumission</td>
+    <td>date_attribution</td>
+    <td>val_total</td>
+      <td>val_nette</td>
+    <td>status</td>
+   
+  </tr>
+  <tr>
+<td>{{ pays.libelle }}</td>
+<td></td>
+<td></td>
+<td></td>
+<td>{{ departement.nom }}</td>
+<td>{{ date_soumission|date('Y-m-d') }}</td>
+<td>{{ date_attribution|date('Y-m-d')}}</td>
+<td>{{ val_total }}</td>
+<td>{{ val_nette }}</td>
+<td>{{ status }}</td>
+  </tr>
+</table>
+<h3> conclusion :  </h3>
+
+
+<p>la recette de vente est </p>
+
+</body>
+
+<footer>
+<h3> générer le : {{ "now"|date("d/m/Y") }} <h3>
+
+<p>Talan-Application de gestion des opportunite </p>
+</footer>
+</html>
