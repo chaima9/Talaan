@@ -4,57 +4,111 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>{{title}}
+    <title>Exporter données
 </title>
+<h3> générer le : {{ "now"|date("d/m/Y") }} <h3>
+
 </head>
 <style>
-table, th, td {
-  border:1px solid black;
+#customers {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #04AA6D;
+  color: white;
 }
 </style>
 <body>
 
 <h2><center>
-Les avantages et les limites d’opportunité </center></h2>
+les details de l'opportunité</center></h2>
 
-<table style="width:100%">
+<table style="width:100%" id="customers" align="center">
   <tr>
     <td>commercial</td>
-    <td>pays</td>
+    <td>date soumission</td>
+    <td>date attribution</td>
+      <td>valeur totale</td>
+    <td>valeur nette</td>
+    <td>client</td>
+      <td>departement</td>
     <td>territoire</td>
-      <td>client</td>
-    <td>etape_transaction</td>
-    <td>departement</td>
-      <td>date_soumission</td>
-    <td>date_attribution</td>
-    <td>val_total</td>
-      <td>val_nette</td>
-    <td>status</td>
+    <td>pays</td>
+      <td>status</td>
+    <td>etape de transaction</td>
+        <td>confiance</td>
+            <td>accord</td>
+
+
    
   </tr>
   <tr>
-<td>{{ pays.libelle }}</td>
-<td></td>
-<td></td>
-<td></td>
-<td>{{ departement.nom }}</td>
+<td>{{commercial}}</td>
 <td>{{ date_soumission|date('Y-m-d') }}</td>
 <td>{{ date_attribution|date('Y-m-d')}}</td>
 <td>{{ val_total }}</td>
 <td>{{ val_nette }}</td>
+<td>{{client.nom}}</td>
+<td>{{ departement.nom }}</td>
+<td>{{ territoire.nom }}</td>
+
+<td>{{ pays.libelle }}</td>
 <td>{{ status }}</td>
+<td>{{ etapedetransaction.num_etape }}</td>
+<td>{{ confiance }}</td>
+<td>{{ accord }}</td>
+
+
+
+
   </tr>
 </table>
 <h3> conclusion :  </h3>
 
 
-<p>la recette de vente est </p>
 
 </body>
 
 <footer>
-<h3> générer le : {{ "now"|date("d/m/Y") }} <h3>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<div align="right">
+</div>
 
-<p>Talan-Application de gestion des opportunite </p>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<div align="center">
+
+<p>Talan-Application ~ Gestion des opportunités </p>
+</div>
 </footer>
 </html>

@@ -19,7 +19,10 @@
                  <th>Date d'attribution</th>
                  <th>Valeur totale</th>
                  <th>Valeur nette</th>
+                  <th>Client</th>
                  <th>Departement</th>
+                  <th>Territoire</th>
+                 <th>Pays</th>
                  <th>Statut</th>
                  <th>Actions</th>
                 </tr>
@@ -32,7 +35,11 @@
                         <td>{{ opp.datedattribution is empty ? "" : opp.datedattribution | date('d/m/Y')}}</td>
                         <td>{{ opp.valeurtotale }}</td>
                         <td>{{ opp.valeurnette }}</td>
+                        <td>{{ opp.client.nom }} {{opp.client.prenom}}</td>
+
                         <td>{{ opp.departement.nom is empty ? "" : opp.departement.nom }}</td>
+                        <td>{{ opp.territoire.nom }} </td>
+                        <td>{{ opp.pays.libelle is empty ? "" : opp.pays.libelle }}</td>
                         <td>{{ opp.statut }}</td>
                         <td> 
                              <a href="/opportunity/edit/{{ opp.id }}" class="btn btn-info">Modifier</a>               

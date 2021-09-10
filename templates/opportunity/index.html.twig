@@ -17,15 +17,17 @@
         <div class="card-body">
                 <table class="table table-bordered">
                 <tr>
-                 <th>Id</th>
+                 <th>Commercial</th>
                  <th>Date de soumission</th>
                  <th>Date d'attribution</th>
                  <th>Valeur totale</th>
                  <th>Valeur nette</th>
                  <th>Client</th>
                  <th>Departement</th>
+                  <th>Territoire</th>
                  <th>Pays</th>
                  <th>Statut</th>
+                 <th>Etape de transaction</th>
                  <th>Confiance</th>
                  <th>Accord</th>
                  <th>Actions</th>
@@ -34,14 +36,14 @@
             <tbody>
                 {% for opp in opportunites %}
                     <tr>
-                        <td>{{ opp.id }}</td>
+                        <td> {{opp.nomcommercial}}</td>
                         <td>{{ opp.datedesoumission | date('d/m/Y')}}</td>
                         <td>{{ opp.datedattribution is empty ? "" : opp.datedattribution | date('d/m/Y')}}</td>
                         <td>{{ opp.valeurtotale }}</td>
                         <td>{{ opp.valeurnette }}</td>
                         <td>{{ opp.client.nom }} {{opp.client.prenom}}</td>
-
                         <td>{{ opp.departement.nom is empty ? "" : opp.departement.nom }}</td>
+                        <td>{{ opp.territoire.nom }} </td>
                         <td>{{ opp.pays.libelle is empty ? "" : opp.pays.libelle }}</td>
                         <td>{% if opp.statut == "Libre" %}
                              <a  class="btn btn-warning">Libre</a> 
@@ -49,8 +51,10 @@
                              <a  class="btn btn-success">Reservée</a> 
                              {% endif %}
                         </td>
+                        <td>{{ opp.etapedetransaction.num_etape }}</td>
                         <td>{{ opp.confiance }}</td>
                         <td>{{ opp.accord }}</td>
+                        
                         <td> {% if opp.statut == "Libre" %} 
                              <a href="/opportunity/edit/{{ opp.id }}" class="btn  btn-info">Modifier</a>
                              {% else %}
@@ -62,10 +66,7 @@
                               {% if opp.statut == "Libre" %}     
                              <a href="/opportunity/reserver/{{ opp.id }}" class="btn btn-success"onclick="return confirm('Etes vous sûr de reserver cette opportunite?');">Reserver</a>
                             {% endif %}
-                           <a href="/opportunity/pdf/{{opp.id}}" class="btn  btn-info">rapport</a>
-
-                            
-
+                           <a href="/opportunity/pdf/{{opp.id}}" class="btn  btn-info">Exporter</a>
                         </td>
                     </tr>
                 {% endfor %}

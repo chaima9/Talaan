@@ -7,7 +7,12 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class AdminController extends AbstractController
-{
+{    
+
+
+
+
+
     /**
      * @Route("/admin/home", name="admin")
      */

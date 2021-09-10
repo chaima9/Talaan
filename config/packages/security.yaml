@@ -21,12 +21,16 @@ security:
                 provider: my_provider
             logout:
                 path: /front/logout
-                target: /sign_in
+                target: /
 
 
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
-    access_control:
-        - { path: ^/contact, roles: ROLE_USER }
-        - { path: ^/profil, roles: ROLE_USER }
-        - { path: ^/home, roles: ROLE_ADMIN }
+   # access_control:
+     #    - { path: ^/opportunity, roles: ['ROLE_ADMIN_C','ROLE_ADMIN_F','ROLE_ADMIN_V','ROLE_DIRECTEUR_V'] }
+      #   - { path: ^/departement, roles: ['ROLE_ADMIN_F'] }
+      #   - { path: ^/pays, roles: ['ROLE_ADMIN_F'] }
+      #   - { path: ^/user, roles: ['ROLE_ADMIN_F'] }
+      #   - { path: ^/client, roles: ['ROLE_ADMIN_F'] }
+      #   - { path: ^/territoire, roles: ['ROLE_ADMIN_F'] }
+     

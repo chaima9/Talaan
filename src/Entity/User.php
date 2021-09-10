@@ -142,14 +142,22 @@ use Symfony\Component\Validator\Constraints\Regex;
                                             {
                                        
                                                 if( $this ->role == 0) {
-         
-                                                        return ['ROLE_USER'];
-                                       
+
+                                                        return ['ROLE_ADMIN_F'];
+
          
                                                 }
-                                                else if($this->role)
+                                                else if($this->role == 1)
                                                 {
-                                                    return ['ROLE_ADMIN'];
+                                                    return ['ROLE_ADMIN_C'];
+                                                }
+                                                else if($this->role == 2)
+                                                {
+                                                    return ['ROLE_ADMIN_V'];
+                                                }
+                                                else if($this->role == 3)
+                                                {
+                                                    return ['ROLE_DIRECTEUR_V'];
                                                 }
                                             }
                                        public function getPassword()

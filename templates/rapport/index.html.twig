@@ -1,0 +1,450 @@
+{% extends 'back/base.html.twig' %}
+{% block title%} Mes opportunités{% endblock %}
+{% block body %}
+    {% if opportunites %}
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+            
+          
+            </div>
+             <div class="card-header border-0">
+   <div class="card card-info">
+              <div class="card-header">
+                <h3 class="card-title">Rapport d'activité annuelle des opportunités ~ {{ "now"|date("Y") - 1 }}/{{ ("now"|date("Y"))  }} </h3>
+                   <div class="card-tools">
+                  
+                    <a href="/opportunity/rapport/pdf" class="fas fa-download"></a>
+                  <a href="#" class="btn btn-tool btn-sm">
+                    <i class="fas fa-bars"></i>
+                  </a>
+                                </div>           
+
+                </div>
+              </div>
+                <table class="table table-bordered">
+                <tr>
+                 <th>Mois</th>
+                 <th>valeur nette</th>
+                 <th>valeur totale</th>
+
+
+               
+                </tr>
+            </thead>
+            <tbody>
+          
+                 
+
+                 <tr>
+
+                  {% set val1 = 0 %}
+                 {% set valt1 = 0 %}
+                {% set valc = 0 %}
+                  {% set i = 0 %}
+                                <td> Janvier</td>
+
+                                   {% for opp in opportunites %}
+
+          {% if opp.datedattribution | date('m') == "01" %}
+                    
+                  {% set val1 = val1 + opp.valeurnette %}
+                   {% set valt1 = valt1 + opp.valeurtotale %}
+
+                    {% set i = i + 1 %}
+                    {% set valc = valc + opp.confiance %}
+
+
+
+                                               {% endif %}
+
+                                
+                {% endfor %}
+
+   <td> {{val1 }}</td>
+   <td> {{valt1}}</td>
+     {% set valpc = (valc * i) / 100  %}
+
+
+
+   </tr>
+   <tr>
+   <td> fevrier </td> 
+                     {% set val2 = 0 %}
+                     {% set valt2 = 0 %}
+                     {% set valc = 0 %}
+                  {% set i = 0 %}
+
+
+     {% for opp in opportunites %}
+
+          {% if opp.datedattribution | date('m') == "02" %}
+                    
+                  {% set val2 = val2 + opp.valeurnette %}
+                  {% set valt2 = valt2 + opp.valeurtotale %}
+
+                       {% set i = i + 1 %}
+                    {% set valc = valc + opp.confiance %}
+
+          {% endif %}
+
+                                
+     {% endfor %}
+
+   <td> {{val2 }}</td>
+      <td> {{valt2 }}</td>
+        {% set valpc = (valc * i) / 100  %}
+
+ </tr>
+
+ <tr>
+   <td> Mars </td> 
+                     {% set val3 = 0 %}
+                      {% set valt3 = 0 %}
+{% set valc = 0 %}
+                  {% set i = 0 %}
+
+
+     {% for opp in opportunites %}
+
+          {% if opp.datedattribution | date('m') == "03" %}
+                    
+                  {% set val3 = val3 + opp.valeurnette %}
+                 {% set valt3 = valt3 + opp.valeurtotale %}
+
+                      {% set i = i + 1 %}
+                    {% set valc = valc + opp.confiance %}
+
+          {% endif %}
+
+                                
+     {% endfor %}
+
+   <td> {{val3 }}</td>
+      <td> {{valt3 }}</td>
+        {% set valpc = (valc * i) / 100  %}
+
+ </tr>
+<tr>
+   <td> Avril </td> 
+                     {% set val4 = 0 %}
+                     {% set valt4 = 0 %}
+                     {% set valc = 0 %}
+                  {% set i = 0 %}
+
+
+
+     {% for opp in opportunites %}
+
+          {% if opp.datedattribution | date('m') == "04" %}
+                    
+                  {% set val4 = val4 + opp.valeurnette %}
+                 {% set valt4 = valt4 + opp.valeurtotale %}
+
+                      {% set i = i + 1 %}
+                    {% set valc = valc + opp.confiance %}
+
+          {% endif %}
+
+                                
+     {% endfor %}
+
+   <td> {{val4 }}</td>
+      <td> {{valt4 }}</td>
+        {% set valpc = (valc * i) / 100  %}
+
+ </tr>
+
+
+ <tr>
+   <td> Mai </td> 
+                     {% set val5 = 0 %}
+                     {% set valt5 = 0 %}
+                     {% set valc = 0 %}
+                  {% set i = 0 %}
+
+
+
+     {% for opp in opportunites %}
+
+          {% if opp.datedattribution | date('m') == "05" %}
+                    
+                  {% set val5 = val5 + opp.valeurnette %}
+                  {% set valt5 = valt5 + opp.valeurtotale %}
+
+                       {% set i = i + 1 %}
+                    {% set valc = valc + opp.confiance %}
+
+          {% endif %}
+
+                                
+     {% endfor %}
+
+   <td> {{val5 }}</td>
+      <td> {{valt5 }}</td>
+
+ </tr>
+
+ <tr>
+   <td> Juin </td> 
+                     {% set val6 = 0 %}
+                   {% set valt6 = 0 %}
+                   {% set valc = 0 %}
+                  {% set i = 0 %}
+
+
+
+     {% for opp in opportunites %}
+
+          {% if opp.datedattribution | date('m') == "06" %}
+                    
+                  {% set val6 = val6 + opp.valeurnette %}
+                  {% set valt6 = valt6 + opp.valeurtotale %}
+
+                       {% set i = i + 1 %}
+                    {% set valc = valc + opp.confiance %}
+
+          {% endif %}
+
+                                
+     {% endfor %}
+
+   <td> {{val6 }}</td>
+      <td> {{valt6 }}</td>
+        {% set valpc = (valc * i) / 100  %}
+
+ </tr>
+
+
+ <tr>
+   <td> Juillet </td> 
+                     {% set val7 = 0 %}
+                           {% set valt7 = 0 %}
+                           {% set valc = 0 %}
+                  {% set i = 0 %}
+
+
+
+     {% for opp in opportunites %}
+
+          {% if opp.datedattribution | date('m') == "07" %}
+                    
+                  {% set val7 = val7 + opp.valeurnette %}
+                                    {% set valt7 = valt7 + opp.valeurtotale %}
+
+                                         {% set i = i + 1 %}
+                    {% set valc = valc + opp.confiance %}
+
+          {% endif %}
+
+                                
+     {% endfor %}
+
+   <td> {{val7 }}</td>
+      <td> {{valt7 }}</td>
+        {% set valpc = (valc * i) / 100  %}
+
+ </tr>
+
+
+ <tr>
+   <td> Aout </td> 
+                     {% set val8 = 0 %}
+                     {% set valt8 = 0 %}
+                     {% set valc = 0 %}
+                  {% set i = 0 %}
+
+
+     {% for opp in opportunites %}
+
+          {% if opp.datedattribution | date('m') == "08" %}
+                    
+                  {% set val8 = val8 + opp.valeurnette %}
+                  {% set valt8 = valt8 + opp.valeurtotale %}
+
+                       {% set i = i + 1 %}
+                    {% set valc = valc + opp.confiance %}
+
+          {% endif %}
+
+                                
+     {% endfor %}
+
+   <td> {{val8 }}</td>
+      <td> {{valt8 }}</td>
+        {% set valpc = (valc * i) / 100  %}
+
+ </tr>
+
+
+ <tr>
+   <td> Septembre </td> 
+                     {% set val9 = 0 %}
+                      {% set valt9 = 0 %}
+
+{% set valc = 0 %}
+                  {% set i = 0 %}
+
+     {% for opp in opportunites %}
+
+          {% if opp.datedattribution | date('m') == "09" %}
+                    
+                  {% set val9 = val9 + opp.valeurnette %}
+                  {% set valt9 = valt9 + opp.valeurtotale %}
+
+                       {% set i = i + 1 %}
+                    {% set valc = valc + opp.confiance %}
+
+          {% endif %}
+
+                                
+     {% endfor %}
+
+   <td> {{val9 }}</td>
+         <td> {{valt9 }}</td>
+
+     {% set valpc = (valc * i) / 100  %}
+ </tr>
+
+ <tr>
+   <td> Octobre </td> 
+                     {% set val10 = 0 %}
+                    {% set valt10 = 0 %}
+                    {% set valc = 0 %}
+                  {% set i = 0 %}
+
+
+
+     {% for opp in opportunites %}
+
+          {% if opp.datedattribution | date('m') == "10" %}
+                    
+                  {% set val10 = val10 + opp.valeurnette %}
+                                    {% set valt10 = valt10 + opp.valeurtotale %}
+
+                                         {% set i = i + 1 %}
+                    {% set valc = valc + opp.confiance %}
+
+          {% endif %}
+
+                                
+     {% endfor %}
+
+   <td> {{val10 }}</td>
+      <td> {{valt10 }}</td>
+        {% set valpc = (valc * i) / 100  %}
+
+ </tr>
+
+
+ <tr>
+   <td> Novembre </td> 
+                     {% set val11 = 0 %}
+                     {% set valt11 = 0 %}
+                     {% set valc = 0 %}
+                  {% set i = 0 %}
+
+
+
+     {% for opp in opportunites %}
+
+          {% if opp.datedattribution | date('m') == "11" %}
+                    
+                  {% set val11 = val11 + opp.valeurnette %}
+                 {% set valt11 = valt11 + opp.valeurtotale %}
+
+                      {% set i = i + 1 %}
+                    {% set valc = valc + opp.confiance %}
+
+          {% endif %}
+
+                                
+     {% endfor %}
+
+   <td> {{val11 }}</td>
+      <td> {{valt11 }}</td>
+        {% set valpc = (valc * i) / 100  %}
+
+ </tr>
+
+ <tr>
+   <td> Decembre </td> 
+                     {% set val12 = 0 %}
+                     {% set valt12 = 0 %}
+                     {% set valc = 0 %}
+                  {% set i = 0 %}
+
+
+
+     {% for opp in opportunites %}
+
+          {% if opp.datedattribution | date('m') == "12" %}
+                    
+                  {% set val12 = val12 + opp.valeurnette %}
+                  {% set valt12 = valt12 + opp.valeurtotale %}
+
+                       {% set i = i + 1 %}
+                    {% set valc = valc + opp.confiance %}
+
+          {% endif %}
+
+                                
+     {% endfor %}
+
+   <td> {{val12 }}</td>
+      <td> {{valt12 }}</td>
+        {% set valpc = (valc * i) / 100  %}
+
+ </tr>
+
+
+
+
+          
+             </tbody>
+         </table>
+                           {% set valtot = 0  %}
+
+            {% for opp in opportunites %}
+
+    
+                    
+                  {% set valtot = valtot + opp.valeurnette %}
+                                
+                {% endfor %}
+
+
+         <h1> Total annuel: {{valtot}} E</h1>
+
+
+{% set valctot = 0  %}
+{% set i = 0  %}
+
+
+            {% for opp in opportunites %}
+   
+    
+                    {% set i = i + 1  %}
+
+                  {% set valctot = valctot + opp.confiance %}
+
+                                
+                {% endfor %}
+
+                 {% set valpc = (valctot * i) / 100  %}
+
+         <h1> Confiance annuel: {{valpc}} %</h1>
+
+        </div>
+      
+            </div>
+        {% else %}
+        <h1 align='center'>Aucun opportunites</h1>
+        <div align='center' >
+           <a href="/opportunity/new" class="btn btn-dark">Ajouter </a> </div>
+        {% endif %}
+
+
+
+         
+{% endblock %}

@@ -6,6 +6,8 @@ use App\Entity\Departement;
 use App\Entity\Opportunity;
 use App\Entity\Pays;
 use App\Entity\Client;
+use App\Entity\Etapedetransaction;
+use App\Entity\Territoire;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -29,9 +31,16 @@ class OpportunityType extends AbstractType
             ->add('client',EntityType::class,['class' => Client::class,
             'choice_label' => 'nom',
             'label' => 'Client'])
+            ->add('territoire',EntityType::class,['class' => Territoire::class,
+            'choice_label' => 'nom',
+            'label' => 'Territoire'])
+
             ->add('pays',EntityType::class,['class' => Pays::class,
             'choice_label' => 'libelle',
             'label' => 'Pays'])
+            ->add('etapedetransaction',EntityType::class,['class' => Etapedetransaction::class,
+            'choice_label' => 'num_etape',
+            'label' => 'Etape de transaction'])
             ->add('accord');
         
     }

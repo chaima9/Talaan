@@ -10,19 +10,21 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 class SecurityController extends AbstractController
 {
     /**
-     * @Route("/sign_in", name="sign_in")
+     * @Route("/", name="sign_in")
      */
     public function login(Request $request, AuthenticationUtils $utils): Response
 
     {
         if ($this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
-            if ($this->get('security.authorization_checker')->isGranted('ROLE_USER')) {
-                return $this->redirectToRoute('profil');
-            } else if ($this->get('security.authorization_checker')->isGranted('ROLE_ADMIN')) {
+            if ($this->get('security.authorization_checker')->isGranted('ROLE_ADMIN_F')) {
+                return $this->redirectToRoute('admin');
+            } else if ($this->get('security.authorization_checker')->isGranted('ROLE_ADMIN_C')) {
+                return $this->redirectToRoute('admin');
+            }else if ($this->get('security.authorization_checker')->isGranted('ROLE_ADMIN_V')) {
                 return $this->redirectToRoute('admin');
             }
             else {
-                return $this->redirectToRoute('logout');
+                return $this->redirectToRoute('admin');
             }
         }
 
@@ -71,6 +73,7 @@ class SecurityController extends AbstractController
      */
     public function logout()
     {
+    
 
 
     }

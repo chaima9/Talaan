@@ -1,0 +1,46 @@
+{% extends 'back/base.html.twig' %}
+{% block title%}
+	Chiffre d'affaire
+{% endblock %}
+{% block body %}
+	{% if opportunites %}
+		<section class="content">
+			<div class="container-fluid">
+
+				<div class="row">
+					<div class="card card-info">
+						<div class="card-header">
+							<h3 class="card-title">Chiffre d'affaire</h3>
+						</div>
+						<div class="card-body">
+							<table class="table table-bordered">
+								<tr>
+									<td>L'annee</td>
+									<td>
+										{{ 2021 }}
+									</td>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>Chiffre d'affaire de Talan</td>
+									<td>
+										{% set resultat = 0 %}
+										{% for oppor in opportunites %}
+											{% if oppor.valeurnette %}
+												{% set resultat = (resultat + oppor.valeurnette) %}
+											{% endif %}
+										{% endfor %}
+										{{ resultat }}
+									</td>
+
+								</tr>
+							</tbody>
+						</table>
+					</div>
+
+				{% else %}
+					<h1 align='center'>Aucun chiffre d'affaire</h1>
+					
+				{% endif %}
+			{% endblock %}

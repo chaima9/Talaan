@@ -77,6 +77,26 @@ class Opportunity
      */
     private $client;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Territoire::class, inversedBy="opportunities")
+     */
+    private $territoire;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Etapedetransaction::class, inversedBy="opportunities")
+     */
+    private $etapedetransaction;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $commercial;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $nomcommercial;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -198,6 +218,54 @@ class Opportunity
     public function setClient(?Client $client): self
     {
         $this->client = $client;
+
+        return $this;
+    }
+
+    public function getTerritoire(): ?Territoire
+    {
+        return $this->territoire;
+    }
+
+    public function setTerritoire(?Territoire $territoire): self
+    {
+        $this->territoire = $territoire;
+
+        return $this;
+    }
+
+    public function getEtapedetransaction(): ?Etapedetransaction
+    {
+        return $this->etapedetransaction;
+    }
+
+    public function setEtapedetransaction(?Etapedetransaction $etapedetransaction): self
+    {
+        $this->etapedetransaction = $etapedetransaction;
+
+        return $this;
+    }
+
+    public function getCommercial(): ?int
+    {
+        return $this->commercial;
+    }
+
+    public function setCommercial(?int $commercial): self
+    {
+        $this->commercial = $commercial;
+
+        return $this;
+    }
+
+    public function getNomcommercial(): ?string
+    {
+        return $this->nomcommercial;
+    }
+
+    public function setNomcommercial(?string $nomcommercial): self
+    {
+        $this->nomcommercial = $nomcommercial;
 
         return $this;
     }
